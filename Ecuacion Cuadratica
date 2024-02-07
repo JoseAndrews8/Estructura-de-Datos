@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    float a, b, c, D, xr, xi, x, x1, x2;
+
+    cout << "Ingresar los valores de a, b, c (con espacio): ";
+    cin >> a >> b >> c;
+    
+    if ( a == 0) {
+        cout << "No tiene solucion";
+    } else {
+    
+    D = b * b - 4 * a * c;
+    }
+    if ( D < 0 ) {
+        xr = - b / ( 2 * a );
+        xi = sqrt( - D ) / ( 2 * a );
+        
+        cout << "X1 = " << xr << "+" << xi << "i" << endl;
+        cout << "X2 = " << xr << "-" << xi << "i" <<endl;
+        } else {
+            x1 = (-b + sqrt( D )) / (2 * a);
+
+            x2 = (-b - sqrt( D )) / (2 * a);
+
+            cout << "X1 = " << x1 << endl;
+            cout << "X2 = " << x2 << endl;
+    }
+    return 0;
+}
