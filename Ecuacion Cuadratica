@@ -14,6 +14,12 @@ int main() {
     } else {
     
     D = b * b - 4 * a * c;
+    
+    if (d== 0) {
+        x = -b / (2 * a);
+        cout << "La solucion unica es: " << x;
+    }
+    
     }
     if ( D < 0 ) {
         xr = - b / ( 2 * a );
