@@ -1,0 +1,85 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+void potencia();
+void factorial();
+void serie();
+double factorialserie(int n);
+
+int main()
+{
+    int opcion;
+    do {
+        cout << "----------------------" << endl;
+        cout << "Menu" << endl;
+        cout << "----------------------" << endl;
+        cout << "[1] Potencia" << endl;
+        cout << "[2] Factorial" << endl;
+        cout << "[3] Serie" << endl;
+        cout << "[0] Salir" <<endl;
+        cout << "----------------------" << endl;
+        cout << "Elegir una opcion: ";
+        cin >> opcion;
+        cout << "----------------------" << endl;
+        switch (opcion){
+            case 1: potencia();
+            break;
+            case 2: factorial();
+            break;
+            case 3: serie();
+            break;
+            case 0: cout << "SALISTE";
+            return 0;
+            break;
+            default: cout << "Opcion Invalida" << endl;
+        }
+    } while (opcion =! 0);
+
+
+    return 0;
+}
+
+void potencia() {
+    double base, exponente, resultado = 1;
+    cout << "Introducir base: ";
+    cin >> base;
+    cout << "Introducir exponente: ";
+    cin >> exponente;
+    for (int i = 1; i <= exponente; ++i) {
+        resultado *= base;
+    }
+    cout << "El resultado es: " << resultado << endl;
+}
+void factorial (){
+    int n, resultado = 1;
+    cout << "Ingresar un numero: ";
+    cin >> n;
+    for (int i = 1; i <= n; ++i) {
+        resultado *= i;
+    }
+    cout << "El factorial de " << n << " es: " << resultado << endl;
+}
+void serie(){
+    
+    double x, n, cont = 0, resultado = 0, fact = 0;
+    cout << "Introducir el valor de X: ";
+    cin >> x;
+    cout << "Introducir el valor de n: ";
+    cin >> n;
+    resultado = 3 + x;
+    for (int i = 1 ; i <= n ; i++){
+       resultado += (pow(x, 2 * i)) / factorialserie(2 * i);
+        
+    }
+    resultado = resultado + cont;
+    cout << "Resultado: " << resultado << endl;;
+}
+double factorialserie(int n){
+double fact = 1;
+    for (int i = 1; i <= n; ++i) {
+        fact *= i;
+    }
+    return fact;
+}
