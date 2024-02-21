@@ -1,0 +1,13 @@
+def potencia(b, e):
+    if e == 0:
+        return 1
+    else:
+        return b * potencia(b, (e - 1))
+
+print('Ingresar la base: ')
+b = int(input())
+
+print('Ingresar el exponente: ')
+e = int(input())
+
+print(potencia (b, e))
