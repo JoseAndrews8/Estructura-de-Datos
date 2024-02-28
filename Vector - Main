@@ -1,0 +1,56 @@
+#include <iostream>
+#include "Vector.h"
+
+#define MAX 10
+
+using namespace std;
+
+void main()
+{
+	int vec[MAX], n, opcion;
+	Vector v1;
+
+	do {
+		cout << "Ingresar el numero de elementos <10: ";
+		cin >> n;
+	} while ((n > MAX) || (n <= 0));
+
+	do {
+		cout << "-----       M E N U        -----" << endl;
+		cout << "|[1] Cargar Vector.            |" << endl;
+		cout << "|[2] Mostrar Vector.           |" << endl;
+		cout << "|[3] Ordenar Vector.           |" << endl;
+		cout << "|[0] Salir.                    |" << endl;
+		cout << "--------------------------------" << endl;
+		cout << " Elija una opcion: ";
+		cin >> opcion;
+
+		switch (opcion) {
+		case 1:
+			v1.cargarVector(vec, n);
+			system("pause");
+			system("cls");
+			break;
+		case 2:
+			v1.mostrarVector(vec, n);
+			system("pause");
+			system("cls");
+			break;
+		case 3:
+			v1.ordenarVector(vec, n);
+			system("pause");
+			system("cls");
+			break;
+		case 0:
+			cout << "Saliste" << endl;
+			system("cls");
+			break;
+		default:
+			cout << "Error: Opcion no valida..." << endl;
+			system("pause");
+			system("cls");
+			break;
+		}
+
+	} while (opcion != 0);
+}
