@@ -1,0 +1,77 @@
+#include <iostream>
+#include "Cadenas.h"
+
+using namespace std;
+
+void main(){
+	int opcion;
+	string nombre;
+	Cadenas can1;
+
+	do
+	{
+		cout << " -------Menu------- " << endl;
+		cout << "[1] Pedir un string " << endl;
+		cout << "[2] Longitud" << endl;
+		cout << "[3] Comparar" << endl;
+		cout << "[4] Contar vocales" << endl;
+		cout << "[5] Sacar substring" << endl;
+		cout << "[6] Encontrar un caracter" << endl;
+		cout << "[7] Invertir" << endl;
+		cout << "[8] Quitar vocales" << endl;
+		cout << "[9] Palindromo" << endl;
+		cout << "[0] Salir" << endl;
+
+		cout << endl;
+		cout << "Elegir una opcion: ";
+		cin >> opcion;
+		cin.ignore();
+		switch (opcion)
+		{
+		case 1:
+			cout << "Ingresar un string: ";
+			getline(cin, nombre);
+			can1.set_cadena(nombre);
+			break;
+		case 2:
+			cout << "La longitud es: " << can1.tamanio() << endl;
+			break;
+		case 3:
+			can1.comparar();
+			break;
+		case 4:
+			can1.contar_vocales();
+			break;
+		case 5:
+			can1.substring();
+			break;
+		case 6:
+			can1.encontrar();
+			break;
+		case 7:
+			can1.invertir();
+			break;
+		case 8:
+			can1.quitar_vocales();
+			break;
+		case 9:
+			if (can1.es_palindromo() == true)
+				cout << "Es palindromo" << endl;
+			else
+				cout << "No es palindromo" << endl;
+			break;
+
+		case 0:
+			cout << "salir\n";
+			break;
+		default:
+			cout << "Opcion invalida";
+		}
+		system("pause");
+		system("cls");
+	} while (opcion != 0);
+
+}
+
+
+
