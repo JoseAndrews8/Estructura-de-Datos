@@ -1,0 +1,74 @@
+#ifndef LIBRO_H
+#define LIBRO_H
+
+#include <string>
+
+class Libro {
+private:
+    std::string nombre;
+    std::string autor;
+    int año;
+
+public:
+    Libro();
+    Libro(const std::string& nombre, const std::string& autor, int año);
+
+    void escribirEnArchivo(const std::string& nombreArchivo) const;
+    void leerYMostrarDesdeArchivo(const std::string& nombreArchivo) const;
+};
+
+#endif // LIBRO_H
+#include <iostream>
+#include <fstream>
+#include "libro.h"
+
+Libro::Libro() : nombre(""), autor(""), año(0) {}
+
+Libro::Libro(const std::string& nombre, const std::string& autor, int año)
+    : nombre(nombre), autor(autor), año(año) {}
+
+void Libro::escribirEnArchivo(const std::string& nombreArchivo) const {
+    std::ofstream archivo(nombreArchivo, std::ios::app);
+    if (archivo.is_open()) {
+        archivo << nombre << "\n" << autor << "\n" << año << "\n";
+        archivo.close();
+    } else {
+        std::cerr << "No se pudo abrir el archivo para escribir." << std::endl;
+    }
+}
+
+void Libro::leerYMostrarDesdeArchivo(const std::string& nombreArchivo) const {
+    std::ifstream archivo(nombreArchivo);
+    if (archivo.is_open()) {
+        std::string nombre;
+        std::string autor;
+        int año;
+        while (std::getline(archivo, nombre) && std::getline(archivo, autor) && archivo >> año) {
+            archivo.ignore(); // Ignorar el salto de línea después del año
+            std::cout << "Nombre: " << nombre << "\n"
+                      << "Autor: " << autor << "\n"
+                      << "Año: " << año << "\n"
+                      << "------------------------" << std::endl;
+        }
+        archivo.close();
+    } else {
+        std::cerr << "No se pudo abrir el archivo para leer." << std::endl;
+    }
+}
+#include <iostream>
+#include "libro.h"
+
+int main() {
+    Libro libro1("El Quijote", "Miguel de Cervantes", 1605);
+    Libro libro2("Cien Años de Soledad", "Gabriel García Márquez", 1967);
+
+    std::string nombreArchivo = "libros.txt";
+
+    libro1.escribirEnArchivo(nombreArchivo);
+    libro2.escribirEnArchivo(nombreArchivo);
+
+    std::cout << "Contenido del archivo:" << std::endl;
+    libro1.leerYMostrarDesdeArchivo(nombreArchivo);
+
+    return 0;
+}
